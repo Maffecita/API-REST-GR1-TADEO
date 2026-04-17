@@ -1,0 +1,71 @@
+### Variables
+@baseUrl = http://localhost:8080
+@token = REEMPLAZAR_CON_TOKEN_REAL
+
+### ─── Health Check ────────────────────────────────────────────────────────────
+
+GET {{baseUrl}}/api/health
+
+### ─── AUTH: Registro ──────────────────────────────────────────────────────────
+
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "estudiante1",
+  "email": "estudiante@universidad.edu",
+  "password": "segura123"
+}
+
+### ─── AUTH: Login ─────────────────────────────────────────────────────────────
+
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "estudiante@universidad.edu",
+  "password": "segura123"
+}
+
+### ─── TAREAS: Crear ───────────────────────────────────────────────────────────
+
+POST {{baseUrl}}/api/tasks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Estudiar punteros en Go",
+  "description": "Revisar el capítulo 4 del libro",
+  "priority": "alta"
+}
+
+### ─── TAREAS: Listar todas ────────────────────────────────────────────────────
+
+GET {{baseUrl}}/api/tasks
+Authorization: Bearer {{token}}
+
+### ─── TAREAS: Obtener por ID ─────────────────────────────────────────────────
+
+GET {{baseUrl}}/api/tasks/1
+Authorization: Bearer {{token}}
+
+### ─── TAREAS: Actualizar ──────────────────────────────────────────────────────
+
+PUT {{baseUrl}}/api/tasks/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Estudiar punteros en Go (actualizado)",
+  "priority": "media"
+}
+
+### ─── TAREAS: Marcar como completada ─────────────────────────────────────────
+
+PATCH {{baseUrl}}/api/tasks/1/complete
+Authorization: Bearer {{token}}
+
+### ─── TAREAS: Eliminar ────────────────────────────────────────────────────────
+
+DELETE {{baseUrl}}/api/tasks/1
+Authorization: Bearer {{token}}
