@@ -14,7 +14,7 @@ type SQLiteRepository struct {
 	db *sql.DB
 }
 
-// NewSQLiteRepository crea e inicializa la base de datos
+// NewSQLiteRepository crea e inicializa la base de datos ñ
 func NewSQLiteRepository(path string) (*SQLiteRepository, error) {
 	db, err := sql.Open("sqlite", path)
 	if err != nil {
